@@ -1,0 +1,27 @@
+.create-group{
+  border: 1pxx solid black;
+  background-color: grey;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.label-color{
+  color : white;
+}
+
+input.ng-invalid.ng-touched {
+  border-left:5px solid red;
+}
+
+input.ng-valid.ng-touched {
+  border-left:5px solid green;
+}
+
+.add-member div {
+    margin: 10px !important;
+}
+
+/*.help-block {
+  display: inline;
+}*/

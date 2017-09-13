@@ -1,0 +1,42 @@
+<div class="container" >
+
+  <h2 style="text-align:center">Calculation Form</h2>
+
+  <form class="">
+    <div class="container col-md-4 col-md-offset-4">
+
+        <div class="form-group">
+          <label><b> Product Cost</b></label>
+          <input currencyMask
+          [(ngModel)]="productCost"
+          class="form-control"
+          placeholder="Product Value"
+          name="Amount"/>
+        </div>
+
+        <div class="form-group">
+          <label><b>Tax</b></label>
+          <input currencyMask
+          [(ngModel)]="taxValue"
+          class="form-control"
+          placeholder="Tax applied Value on over all bill"
+          [options]="{ suffix: '%', prefix: '' }"
+          name="Amount"/>
+        </div>
+
+        <div class="form-group">
+          <label><b>Tax Amount</b></label>
+          <input   currencyMask class="form-control" [(ngModel)]="taxAmount" placeholder="After Calculation" name="taxAmount" readonly>
+        </div>
+
+        <div class="form-group">
+          <label><b>Total</b></label>
+          <input   currencyMask class="form-control" [(ngModel)]="total" placeholder="After Calculation" name="total"  readonly>
+        </div>
+
+        <button type="button" (click)="calculateTax()" class="btn btn-primary btn-lg">Calculate</button>
+
+      </div>
+  </form>
+
+</div>

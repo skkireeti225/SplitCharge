@@ -1,0 +1,111 @@
+<div class="container">
+  <h2 style="text-align:center; color: green">Create a Group</h2>
+
+<div class="container create-group">
+    <div class="col-md-6 col-md-offset-3">
+      <form class="form-inline" #gf="ngForm">
+        <div class="form-group">
+          <label for="groupName"class="label-color" >Group Name</label>
+          <input type="text" class="form-control" ngModel id="groupName" name="groupName" required placeholder="Group Name">
+        </div>
+        <button type="button" (click)="addMembers()" class="btn btn-primary">Add Members</button>
+        <!-- <button type="submit" class="btn btn-success">Create Group</button> -->
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Create Group</button>
+      </form>
+    </div>
+</div>
+
+
+<div class="container col-md-10 col-md-offset-2" *ngIf="addMember">
+  <form class="form-inline add-member" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+      type="text"
+      class="form-control"
+      ngModel
+      name="username"
+      #username = "ngModel"
+      placeholder="User Name"
+      required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input
+      type="text"
+      class="form-control"
+      ngModel
+      name="email"
+      #email = "ngModel"
+      placeholder="email"
+      required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input
+      type="number"
+      class="form-control"
+      ngModel
+      name="phone"
+      #phone = "ngModel"
+      placeholder="phone"
+      required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="container">
+  <h2 style="text-align:center; color: green">Group members</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor="let member of groupMembersList; let i = index">
+        <td>{{member.username}}</td>
+        <td>{{member.email}}</td>
+        <td>{{member.phone}}</td>
+      </tr> -->
+
+      <tr app-view-member-list
+      *ngFor="let member of groupMembersList;
+      let i = index"
+      [groupMember]="member"
+      [index]="i">
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Do you like to add Members in the group.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button"  class="btn btn-success" data-dismiss="modal">Yes</button>
+          <button type="button" (click)="createForm(gf)" class="btn btn-primary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>

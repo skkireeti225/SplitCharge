@@ -1,0 +1,98 @@
+<div class="container" >
+
+  <h2 style="text-align:center">Expenditure</h2>
+
+  <form class="" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="container col-md-4 col-md-offset-4">
+
+        <div class="form-group">
+          <!-- <label><b> Description</b></label>
+          <input
+          ngModel
+          class="form-control"
+          placeholder="Purchase Info"
+          name="description"/> -->
+
+          <label for="purchaseInfo">Description</label>
+          <input
+          type="text"
+          class="form-control"
+          ngModel
+          name="purchaseInfo"
+          #username = "ngModel"
+          placeholder="Purchase Info"
+          required>
+        </div>
+
+        <div class="form-group">
+          <!-- <label><b>Amount</b></label>
+          <input currencyMask
+          ngModel
+          class="form-control"
+          placeholder="Amount Spent"
+          name="amount"/> -->
+          <label for="amountSpent">Amount</label>
+          <input
+          type="text"
+          class="form-control"
+          ngModel
+          name="amountSpent"
+          #username = "ngModel"
+          placeholder="Amount Spent"
+          required>
+
+        </div>
+
+        <div class="" style="margin-bottom:20px;">
+          <button type="button"  class="btn btn-primary " data-toggle="collapse" data-target="#paid">Paid By</button>
+          <button type="button"  class="btn btn-primary " data-toggle="collapse" data-target="#split">Split to</button>
+
+          <div id="paid" class="collapse">
+            <div class="" style="border:1px solid black; border-radius:5px; margin: 20px 0px; " >
+              <p style="text-align:center">Paid By</p>
+              <ul style="list-style-type: none;" ngModelGroup="paidMember">
+                <li><label><input type="checkbox" ngModel value="option1" name=""> Caren</label></li>
+                <li><label><input type="checkbox" ngModel value="option2" name=""> Kiran</label></li>
+                <li><label><input type="checkbox" ngModel value="option3" name=""> Indi</label></li>
+                <li><label><input type="checkbox" ngModel value="option4" name=""> Me</label></li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="split" class="collapse">
+            <div class="" style="border:1px solid black; border-radius:5px; margin:20px 0px; " ngModelGroup="splitMembers">
+              <p style="text-align:center">Split To</p>
+              <ul style="list-style-type: none;">
+                <li><label><input type="checkbox" ngModel value="option1" name=""> Caren</label></li>
+                <li><label><input type="checkbox" ngModel value="option2" name=""> Kiran</label></li>
+                <li><label><input type="checkbox" ngModel value="option3" name=""> Indi</label></li>
+                <li><label><input type="checkbox" ngModel value="option4" name=""> Me</label></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">Calculate</button>
+      </div>
+  </form>
+</div>
+
+<div class="container" style="padding-top:40px;">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Amount Payable</th>
+        <th>Amount Reciveble</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let i of calculatedAmount">
+        <td>{{i.name}}</td>
+        <td>{{i.payableAmount}}</td>
+        <td>{{i.RecivebleAmount}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
